@@ -21,7 +21,11 @@ public class NMS {
     public static boolean init() {
         if (loaded) return true;
         MinecraftVersion version = MinecraftVersion.getVersion();
-        if (version.equals(UNKNOWN) || version.equals(MC26_1)) {
+        if (version.equals(UNKNOWN) || version.equals(MC26_2)) {
+            mapPacket = new MapPacket_mojmap_26_2();
+            return loaded = true;
+        }
+        if (version.equals(MC26_1)) {
             mapPacket = new MapPacket_mojmap_26_1();
             return loaded = true;
         }

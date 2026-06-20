@@ -19,7 +19,8 @@ public enum MinecraftVersion {
     MC1_20_R4(1204, true), MC1_21_R1(1211, true), MC1_21_R2(1212, true), MC1_21_R3(1213, true), MC1_21_R4(1214, true),
     MC1_21_R5(1215, true), MC1_21_R6(1216, true), MC1_21_R7(1217, true),
 
-    MC26_1(260100, true);
+    MC26_1(260100, true),
+    MC26_2(260200, true);
 
     private static MinecraftVersion version;
 
@@ -47,6 +48,7 @@ public enum MinecraftVersion {
             this.put("26.1", MC26_1);
             this.put("26.1.1", MC26_1);
             this.put("26.1.2", MC26_1);
+            this.put("26.2", MC26_2);
         }
     };
 
