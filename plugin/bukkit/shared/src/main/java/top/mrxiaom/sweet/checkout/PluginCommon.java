@@ -22,10 +22,12 @@ import top.mrxiaom.sweet.checkout.database.BuyCountDatabase;
 import top.mrxiaom.sweet.checkout.database.TradeDatabase;
 import top.mrxiaom.sweet.checkout.func.PaymentAPI;
 import top.mrxiaom.sweet.checkout.nms.NMS;
+import top.mrxiaom.sweet.checkout.utils.PlayerNameCache;
 
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class PluginCommon extends BukkitPlugin {
@@ -119,6 +121,7 @@ public abstract class PluginCommon extends BukkitPlugin {
         );
     }
 
+    private PlayerNameCache playerNameCache;
     @Override
     protected void afterEnable() {
         if (Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
@@ -131,7 +134,22 @@ public abstract class PluginCommon extends BukkitPlugin {
             }
             placeholders.register();
         }
+        playerNameCache = new PlayerNameCache(this);
         getLogger().info("SweetCheckout 加载完毕");
+    }
+
+    @Override
+    protected void afterDisable() {
+        if (playerNameCache != null) {
+            playerNameCache.clear();
+        }
+    }
+
+    public List<String> getOfflinePlayerNames(String input, int limit) {
+        if (playerNameCache != null) {
+            return playerNameCache.getOfflinePlayerNames(input, limit);
+        }
+        return new ArrayList<>();
     }
 
     @SafeVarargs
