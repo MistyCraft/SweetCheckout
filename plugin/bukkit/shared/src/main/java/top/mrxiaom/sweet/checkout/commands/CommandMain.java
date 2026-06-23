@@ -571,14 +571,14 @@ public class CommandMain extends AbstractModule implements CommandExecutor, TabC
             }
             if ("check".equalsIgnoreCase(args[0]) && sender.hasPermission("sweet.checkout.check.other")) {
                 if (args[1].length() > 2) {
-                    return plugin.getOfflinePlayerNames(args[1], 16);
+                    return plugin.getOfflinePlayerNames(args[1], 32);
                 }
                 return null;
             }
             if (sender.isOp()) {
                 if ("log".equalsIgnoreCase(args[0])) {
                     if (args[1].length() > 2) {
-                        return plugin.getOfflinePlayerNames(args[1], 16);
+                        return plugin.getOfflinePlayerNames(args[1], 32);
                     }
                     return null;
                 }

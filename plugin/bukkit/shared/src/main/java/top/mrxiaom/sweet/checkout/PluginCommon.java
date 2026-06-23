@@ -147,7 +147,7 @@ public abstract class PluginCommon extends BukkitPlugin {
 
     public List<String> getOfflinePlayerNames(String input, int limit) {
         if (playerNameCache != null) {
-            return playerNameCache.getOfflinePlayerNames(input, limit);
+            return playerNameCache.getOfflinePlayerNames(input.toLowerCase(), limit);
         }
         return new ArrayList<>();
     }
